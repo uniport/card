@@ -3,28 +3,27 @@ name: Main Workflow
 on: [push, pull_request]
 
 jobs:
-  lint_build_test:
-    name: Lint, Build and Test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+  runs-on: ubuntu-latest
+  strategy:
+    matrix:
+      node: ['14', '16', '18', '19']
+  name: Test Node ${{ matrix.node }}
+  steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node }}
 
-      - name: Use Node.js 18.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
+    # @see https://www.voorhoede.nl/en/blog/super-fast-npm-install-on-github-actions/
+    - uses: actions/cache@v3
+      id: cache-node-modules
+      with:
+        path: ./node_modules
+        key: ${{ runner.os }}-${{ matrix.node }}-modules-${{ hashFiles('package-lock.json') }}
 
-      - name: Cache Node.js modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+    - name: Install packages
+      if: steps.cache-node-modules.outputs.cache-hit != 'true'
+      run: npm ci
 
-      - name: Dependencies
-        run: npm ci
-
-      - name: Tests
-        run: npm run test
+    - name: Run Tests
+      run: npm test
