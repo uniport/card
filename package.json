@@ -12,7 +12,7 @@
   },
   "files": [
     "bin/card.js",
-    "bin/output"
+    "bin/output.txt"
   ],
   "scripts": {
     "test": "node ./bin/card.js"
