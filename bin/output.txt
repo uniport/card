@@ -8,7 +8,7 @@
    │   a seamless experience.                              │
    │                                                       │
    │   Web:       https://uniport.ch                       │
-   │   npm:       https://npmjs.com/@uniport.card          │
+   │   npm:       https://npmjs.com/@uniport/card          │
    │                                                       │
    │   Card:      npx @uniport/card                        │
    │                                                       │
