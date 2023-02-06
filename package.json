@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "description": "The powerful & secure composite application platform for all your digital products delivering a seamless experience.",
   "license": "MIT",
-  "author": "hello@uniport.ch",
+  "author": "Uniport <hello@uniport.ch>",
+  "repository": {
+    "url": "uniport/card"
+  },
   "type": "module",
   "exports": "./bin/card.js",
   "main": "index.js",
@@ -28,5 +31,8 @@
   ],
   "engines": {
     "node": ">=14.14"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
