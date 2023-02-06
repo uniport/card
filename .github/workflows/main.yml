@@ -1,29 +1,30 @@
 name: Main Workflow
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 jobs:
-  runs-on: ubuntu-latest
-  strategy:
-    matrix:
-      node: ['14', '16', '18', '19']
-  name: Test Node ${{ matrix.node }}
-  steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node }}
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ '14', '16', '18', '19' ]
+    name: Test Node ${{ matrix.node }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
 
-    # @see https://www.voorhoede.nl/en/blog/super-fast-npm-install-on-github-actions/
-    - uses: actions/cache@v3
-      id: cache-node-modules
-      with:
-        path: ./node_modules
-        key: ${{ runner.os }}-${{ matrix.node }}-modules-${{ hashFiles('package-lock.json') }}
+      # @see https://www.voorhoede.nl/en/blog/super-fast-npm-install-on-github-actions/
+      - uses: actions/cache@v3
+        id: cache-node-modules
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-${{ matrix.node }}-modules-${{ hashFiles('package-lock.json') }}
 
-    - name: Install packages
-      if: steps.cache-node-modules.outputs.cache-hit != 'true'
-      run: npm ci
+      - name: Install packages
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
 
-    - name: Run Tests
-      run: npm test
+      - name: Run Tests
+        run: npm test
