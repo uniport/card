@@ -1,0 +1,32 @@
+{
+  "name": "@uniport/card",
+  "version": "1.0.0",
+  "description": "The powerful & secure composite application platform for all your digital products delivering a seamless experience.",
+  "license": "MIT",
+  "author": "hello@uniport.ch",
+  "type": "module",
+  "exports": "./bin/card.js",
+  "main": "index.js",
+  "bin": {
+    "uniport": "./bin/card.js"
+  },
+  "files": [
+    "bin/card.js",
+    "bin/output"
+  ],
+  "scripts": {
+    "test": "node ./bin/card.js"
+  },
+  "keywords": [
+    "composite application platform",
+    "keycloak",
+    "oss",
+    "portal",
+    "quarkus",
+    "uniport",
+    "webcomponents"
+  ],
+  "engines": {
+    "node": ">=14.14"
+  }
+}
