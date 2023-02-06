@@ -1,7 +1,7 @@
 
    ╭───────────────────────────────────────────────────────╮
    │                                                       │
-   │   uniport                                             │
+   │   Uniport                                             │
    │                                                       │
    │   The powerful & secure composite application         │
    │   platform for all your digital products delivering   │
