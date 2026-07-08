@@ -1,6 +1,6 @@
 {
   "name": "@uniport/card",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "The powerful & secure composite application platform for all your digital products delivering a seamless experience.",
   "license": "MIT",
   "author": "Uniport <hello@uniport.ch>",
@@ -30,7 +30,7 @@
     "webcomponents"
   ],
   "engines": {
-    "node": ">=14.14"
+    "node": ">=22"
   },
   "publishConfig": {
     "access": "public"
