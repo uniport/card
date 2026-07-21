@@ -16,7 +16,7 @@ jobs:
           node-version: ${{ matrix.node }}
 
       # @see https://www.voorhoede.nl/en/blog/super-fast-npm-install-on-github-actions/
-      - uses: actions/cache@v3
+      - uses: actions/cache@v6
         id: cache-node-modules
         with:
           path: ./node_modules
